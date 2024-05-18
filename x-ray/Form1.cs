@@ -12,6 +12,8 @@ using Emgu.CV.Reg;
 using Emgu.CV.Structure;
 using ColorMapType = Emgu.CV.CvEnum.ColorMapType;
 using static System.Net.Mime.MediaTypeNames;
+using AForge.Imaging.Filters;
+using AForge.Imaging;
 namespace x_ray
 {
     public partial class Form1 : Form
@@ -49,7 +51,8 @@ namespace x_ray
              ColorMapType.Pink,
              ColorMapType.Magma,
              ColorMapType.Inferno,
-             ColorMapType.Plasma
+             ColorMapType.Plasma,
+             ColorMapType.Viridis
             };
 
             foreach (ColorMapType mapType in Enum.GetValues(typeof(ColorMapType)))
@@ -161,7 +164,26 @@ namespace x_ray
 
 
 
+        public Bitmap CreateNonIndexedImage(Bitmap src)
+        {
+            Bitmap newBmp = new Bitmap(src.Width, src.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
+            using (Graphics gfx = Graphics.FromImage(newBmp))
+            {
+                gfx.DrawImage(src, 0, 0);
+            }
+            
+            return newBmp;
+        }
+
+        public Bitmap ConvertToGrayScale(Bitmap src)
+        {
+            Grayscale filter = new Grayscale(0.2125, 0.7154, 0.0721);
+            Bitmap grayImage = filter.Apply(src);
+
+            return grayImage;
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -169,14 +191,18 @@ namespace x_ray
             {
 
 
-                Bitmap bitmap = new Bitmap(originalImage);
+                //Bitmap bitmap = new Bitmap(originalImage);
+               
+                Bitmap grayImage = ConvertToGrayScale(originalImage);
 
-                //// Draw the original image onto the new bitmap
-                //using (Graphics g = Graphics.FromImage(bitmap))
+                Bitmap newImage = CreateNonIndexedImage(grayImage);
+
+                // Draw the original image onto the new bitmap
+                //using (Graphics g = Graphics.FromImage(grayImage))
                 //{
                 //    g.DrawImage(originalImage, new Point(0, 0));
                 //}
-                // Replace with your chosen ColorMapType
+                //Replace with your chosen ColorMapType
                 ColorMapType selectedColorMapType = selectedMap;
                 //Image<Bgr, byte> originalImage = pictureBox.Image;
 
@@ -190,14 +216,15 @@ namespace x_ray
 
                             Color originalColor = originalImage.GetPixel(x, y);
                             Color newColor = ApplyColorMap(originalColor, selectedColorMapType);
-                            bitmap.SetPixel(x, y, newColor);
+                            newImage.SetPixel(x, y, newColor);
 
                         }
                     }
                 }
+                
                 pictureBox1.Visible = true;
                 button3.Visible = true;
-                pictureBox1.Image = bitmap;
+                pictureBox1.Image = newImage;
 
                 pictureBox1.Refresh();
                 pictureBox1.Invalidate();
@@ -213,9 +240,14 @@ namespace x_ray
                 case ColorMapType.Autumn:
                     return Color.FromArgb(originalColor.R, originalColor.G, 255 - originalColor.B);
                 case ColorMapType.Bone:
-                    int grayScale = (int)(0.2989 * originalColor.R + 0.5870 * originalColor.G + 0.1140 * originalColor.B);
-                    return Color.FromArgb(grayScale, grayScale, grayScale);
+                    int r = (int)(originalColor.R * 0.65 + 0.35 * 255);
+                    int g = (int)(originalColor.G * 0.65 + 0.35 * 255);
+                    int b = (int)(originalColor.B * 0.65 + 0.35 * 255);
+                    return Color.FromArgb(r, g, b);
                 case ColorMapType.Jet:
+                    float normalizedR = originalColor.R / 255.0f;
+                    float normalizedG = originalColor.G / 255.0f;
+                    float normalizedB = originalColor.B / 255.0f;
                     double hue = 240.0 * (1.0 - (0.2989 * originalColor.R + 0.5870 * originalColor.G + 0.1140 * originalColor.B) / 255.0);
                     return Color.FromArgb(
                         (int)(255 * (1 + Math.Cos((hue - 120) * Math.PI / 180)) / 2),

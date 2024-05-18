@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("x-ray")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7db07420a1116f3b33fd5ea27cd8daec8556652b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d4b52a8e5feede71513f786e8125d8531ef2aba")]
 [assembly: System.Reflection.AssemblyProductAttribute("x-ray")]
 [assembly: System.Reflection.AssemblyTitleAttribute("x-ray")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
