@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5CIT4piqCX0D7GgCfbRxpKhNKQetnrWdP5VbSJMRroHtWEAB6U66vSlUvfnIFzz1i12tAVSGfaCQb5v+OTGAlg==",
+  "dgSpecHash": "hIKTDnBh8x40WnS2W3J68tqekWHnBdOvaskzyjifhRr5ALUVDyFH3dfz2F2YfzfVoUn4oVLoMEO3B+cH51/Taw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\x-ray\\x-ray\\x-ray.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\x-Ray-images-processing\\x-ray\\x-ray.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\aforge.imaging\\2.2.5\\aforge.imaging.2.2.5.nupkg.sha512",

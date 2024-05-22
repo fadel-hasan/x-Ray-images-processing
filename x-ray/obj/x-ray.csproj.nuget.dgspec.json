@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\x-ray\\x-ray\\x-ray.csproj": {}
+    "C:\\Users\\Administrator\\source\\repos\\x-Ray-images-processing\\x-ray\\x-ray.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\x-ray\\x-ray\\x-ray.csproj": {
+    "C:\\Users\\Administrator\\source\\repos\\x-Ray-images-processing\\x-ray\\x-ray.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\x-ray\\x-ray\\x-ray.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\x-Ray-images-processing\\x-ray\\x-ray.csproj",
         "projectName": "x-ray",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\x-ray\\x-ray\\x-ray.csproj",
+        "projectPath": "C:\\Users\\Administrator\\source\\repos\\x-Ray-images-processing\\x-ray\\x-ray.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\x-ray\\x-ray\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\source\\repos\\x-Ray-images-processing\\x-ray\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

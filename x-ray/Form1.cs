@@ -93,7 +93,6 @@ namespace x_ray
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    originalImage = new Bitmap(pictureBox.Image);
 
                     isSelecting = true;
                     selectedArea = new Rectangle(e.Location, new Size(0, 0));
@@ -125,7 +124,6 @@ namespace x_ray
             if (e.Button == MouseButtons.Left)
             {
                 isSelecting = false;
-                pictureBox1.Refresh();
             }
         }
 
@@ -203,7 +201,7 @@ namespace x_ray
                 //    g.DrawImage(originalImage, new Point(0, 0));
                 //}
                 //Replace with your chosen ColorMapType
-                ColorMapType selectedColorMapType = selectedMap;
+                //ColorMapType selectedColorMapType = selectedMap;
                 //Image<Bgr, byte> originalImage = pictureBox.Image;
 
                 for (int x = selectedArea.Location.X; x < selectedArea.Location.X + selectedArea.Width; x++)
@@ -215,7 +213,7 @@ namespace x_ray
                         {
 
                             Color originalColor = originalImage.GetPixel(x, y);
-                            Color newColor = ApplyColorMap(originalColor, selectedColorMapType);
+                            Color newColor = ApplyColorMap(originalColor, selectedMap);
                             newImage.SetPixel(x, y, newColor);
 
                         }
